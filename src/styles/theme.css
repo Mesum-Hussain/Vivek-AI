@@ -179,3 +179,102 @@
     line-height: 1.5;
   }
 }
+
+/* Vivek AI Gamification Custom Styles */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-4px);
+  }
+}
+
+@keyframes pulse-glow {
+  0%, 100% {
+    box-shadow: 0 0 5px rgba(99, 102, 241, 0.15), 0 0 1px rgba(99, 102, 241, 0.1);
+  }
+  50% {
+    box-shadow: 0 0 15px rgba(99, 102, 241, 0.35), 0 0 3px rgba(99, 102, 241, 0.2);
+  }
+}
+
+@keyframes gradient-shimmer {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.animate-float-slow {
+  animation: float 4s ease-in-out infinite;
+}
+
+.animate-glow-purple {
+  animation: pulse-glow 3s ease-in-out infinite;
+}
+
+.bg-quest-gradient {
+  background: linear-gradient(135deg, #3b82f6, #6366f1, #a855f7);
+  background-size: 200% 200%;
+  animation: gradient-shimmer 6s ease infinite;
+}
+
+.bg-neutral-glow {
+  background: linear-gradient(135deg, #1e293b, #2e1065, #1e1b4b);
+  background-size: 200% 200%;
+  animation: gradient-shimmer 8s ease infinite;
+}
+
+.bg-neon-emerald {
+  background: linear-gradient(135deg, #10b981, #06b6d4);
+}
+
+.bg-neon-sunset {
+  background: linear-gradient(135deg, #f43f5e, #8b5cf6);
+}
+
+.bg-quest-card {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(226, 232, 240, 0.8);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.bg-quest-card:hover {
+  transform: translateY(-3px) scale(1.01);
+  box-shadow: 0 12px 20px -8px rgba(99, 102, 241, 0.15), 0 4px 6px -2px rgba(99, 102, 241, 0.05);
+  border-color: rgba(168, 85, 247, 0.4);
+}
+
+.badge-pulse {
+  position: relative;
+}
+
+.badge-pulse::after {
+  content: '';
+  position: absolute;
+  inset: -2px;
+  border-radius: inherit;
+  border: 2px solid rgba(168, 85, 247, 0.4);
+  opacity: 0;
+  animation: pulse-glow 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+.text-gradient-purple {
+  background: linear-gradient(135deg, #6366f1, #a855f7);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.text-gradient-neon {
+  background: linear-gradient(135deg, #06b6d4, #3b82f6);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+

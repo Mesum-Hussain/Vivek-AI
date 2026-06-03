@@ -514,7 +514,7 @@ export default function App() {
   return (
     <div className="flex h-screen overflow-hidden animate-fade-in">
       {/* Desktop Sidebar */}
-      <div className="hidden md:block">
+      <div className="hidden md:block col-span-1 shrink-0">
         <SidebarNav
           selectedSubject={selectedSubject}
           onSelectSubject={handleSelectSubject}
@@ -525,6 +525,8 @@ export default function App() {
           classRank={studentClassRank}
           studentName={session.name}
           studentAvatar={activeStudent?.avatar}
+          averageScore={activeStudent?.averageScore}
+          completedCount={activeStudent?.completedCount}
         />
       </div>
 
@@ -532,7 +534,7 @@ export default function App() {
       {isSidebarOpen && (
         <>
           <div
-            className="fixed inset-0 z-40 md:hidden"
+            className="fixed inset-0 z-40 md:hidden bg-slate-900/60 backdrop-blur-xs"
             onClick={() => setIsSidebarOpen(false)}
           />
           <div className="fixed left-0 top-0 bottom-0 z-50 md:hidden">
@@ -547,6 +549,8 @@ export default function App() {
               classRank={studentClassRank}
               studentName={session.name}
               studentAvatar={activeStudent?.avatar}
+              averageScore={activeStudent?.averageScore}
+              completedCount={activeStudent?.completedCount}
             />
           </div>
         </>
@@ -559,6 +563,8 @@ export default function App() {
             classRank={studentClassRank}
             studentName={session.name}
             teacherNotes={teacherNotes}
+            onStartAssignment={handleStartAssignment}
+            onSelectSubject={handleSelectSubject}
           />
         )}
 
@@ -591,6 +597,9 @@ export default function App() {
             studentName={session.name}
             studentEmail={session.email}
             classRank={studentClassRank}
+            averageScore={activeStudent?.averageScore}
+            completedCount={activeStudent?.completedCount}
+            subjectAverages={activeStudent?.subjectAverages}
             onLogout={() => {
               setSession(null);
               setViewMode("dashboard");

@@ -375,81 +375,102 @@ export function TeacherPortal({
   });
 
   const renderSidebar = (onClose?: () => void) => (
-    <aside className="w-64 bg-white text-slate-900 flex flex-col shrink-0 border-r border-slate-200 h-full">
-      <div className="p-6 border-b border-slate-200 shrink-0 flex items-center justify-between">
-        <div>
-          <h1 className="text-xl font-semibold">Vivek AI</h1>
-          <p className="text-sm text-gray-500 mt-1">Teacher Portal</p>
+    <aside className="w-64 bg-slate-900 text-slate-100 flex flex-col shrink-0 border-r border-slate-800 h-full">
+      <div className="p-6 border-b border-slate-800 shrink-0 flex items-center justify-between">
+        <div className="flex items-center gap-2">
+          <div className="p-1.5 bg-gradient-to-tr from-indigo-500 to-purple-600 rounded-lg shadow-md">
+            <Sparkles className="w-5 h-5 text-white animate-pulse" />
+          </div>
+          <div>
+            <h1 className="text-lg font-bold bg-gradient-to-r from-white via-indigo-200 to-purple-300 bg-clip-text text-transparent">Vivek AI</h1>
+            <p className="text-2xs text-slate-400 font-semibold tracking-wider uppercase">Teacher Portal</p>
+          </div>
         </div>
         {onClose && (
-          <Button variant="ghost" size="icon" onClick={onClose} className="shrink-0">
+          <Button variant="ghost" size="icon" onClick={onClose} className="text-slate-400 hover:text-white shrink-0">
             <X className="w-5 h-5" />
           </Button>
         )}
       </div>
 
-      <nav className="flex-1 p-4 space-y-1 overflow-y-auto">
+      <nav className="flex-1 p-4 space-y-1.5 overflow-y-auto">
         <Button
-          variant={currentTab === "dashboard" ? "default" : "ghost"}
-          className="w-full justify-start gap-3"
+          variant="ghost"
+          className={`w-full justify-start gap-3 text-sm h-9.5 cursor-pointer ${
+            currentTab === "dashboard"
+              ? "bg-indigo-600 text-white shadow-sm hover:bg-indigo-700"
+              : "text-slate-350 hover:bg-slate-800 hover:text-white"
+          }`}
           onClick={() => navigateToTab("dashboard")}
         >
-          <Layers className="w-5 h-5" />
+          <Layers className="w-4 h-4 shrink-0" />
           Dashboard
         </Button>
 
         <Button
-          variant={currentTab === "students" ? "default" : "ghost"}
-          className="w-full justify-start gap-3 mt-1"
+          variant="ghost"
+          className={`w-full justify-start gap-3 text-sm h-9.5 cursor-pointer mt-1 ${
+            currentTab === "students"
+              ? "bg-indigo-600 text-white shadow-sm hover:bg-indigo-700"
+              : "text-slate-350 hover:bg-slate-800 hover:text-white"
+          }`}
           onClick={() => navigateToTab("students")}
         >
-          <Users className="w-5 h-5" />
-          Stats
+          <Users className="w-4 h-4 shrink-0" />
+          Students & Guidance
         </Button>
 
         <Button
-          variant={currentTab === "assignments" ? "default" : "ghost"}
-          className="w-full justify-start gap-3 mt-1"
+          variant="ghost"
+          className={`w-full justify-start gap-3 text-sm h-9.5 cursor-pointer mt-1 ${
+            currentTab === "assignments"
+              ? "bg-indigo-600 text-white shadow-sm hover:bg-indigo-700"
+              : "text-slate-350 hover:bg-slate-800 hover:text-white"
+          }`}
           onClick={() => navigateToTab("assignments")}
         >
-          <BookOpen className="w-5 h-5" />
-          Assign
+          <BookOpen className="w-4 h-4 shrink-0" />
+          Campaign Planner
         </Button>
 
         <Button
-          variant={currentTab === "reviews" ? "default" : "ghost"}
-          className="w-full justify-start gap-3 mt-1"
+          variant="ghost"
+          className={`w-full justify-start gap-3 text-sm h-9.5 cursor-pointer mt-1 ${
+            currentTab === "reviews"
+              ? "bg-indigo-600 text-white shadow-sm hover:bg-indigo-700"
+              : "text-slate-350 hover:bg-slate-800 hover:text-white"
+          }`}
           onClick={() => navigateToTab("reviews")}
         >
           <div className="relative">
-            <Sparkles className="w-5 h-5" />
+            <Sparkles className="w-4 h-4 shrink-0" />
             {pendingReviews > 0 && (
               <span className="absolute -top-1 -right-1 w-2.5 h-2.5 bg-rose-500 rounded-full" />
             )}
           </div>
-          Reviews
+          Evaluation Center
           {pendingReviews > 0 && (
-            <Badge className="ml-auto bg-rose-500 text-white border-0 text-2xs px-1.5 py-0.5">{pendingReviews}</Badge>
+            <Badge className="ml-auto bg-rose-500 text-white border-0 text-[10px] font-bold px-1.5 py-0.5">{pendingReviews}</Badge>
           )}
         </Button>
       </nav>
 
-      <div className="p-4 border-t border-slate-200 shrink-0">
+      <div className="p-4 border-t border-slate-800 bg-slate-950 shrink-0">
         <button
           type="button"
           onClick={() => navigateToTab("profile")}
-          className={`flex items-center gap-3 px-2 py-2 w-full rounded-lg transition-colors text-left cursor-pointer ${
-            currentTab === "profile" ? "bg-indigo-50 ring-1 ring-indigo-100" : "hover:bg-slate-100"
+          className={`flex items-center gap-3 px-3 py-2.5 w-full rounded-xl transition-all text-left cursor-pointer border border-slate-850 bg-slate-900/40 ${
+            currentTab === "profile" ? "bg-indigo-900/40 border-indigo-500 text-white" : "hover:bg-slate-900 text-slate-300"
           }`}
         >
           <img
             src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=100&h=100&fit=crop&crop=faces"
             alt="Teacher Profile"
-            className="w-9 h-9 rounded-full object-cover shrink-0"
+            className="w-9 h-9 rounded-full object-cover shrink-0 border border-slate-700"
           />
-          <div className="min-w-0">
-            <p className="text-sm font-medium truncate">{teacherName}</p>
-            <p className="text-xs text-gray-500 truncate">Profile</p>
+          <div className="min-w-0 flex-1">
+            <p className="text-xs font-bold text-white truncate">{teacherName}</p>
+            <p className="text-3xs text-slate-400 font-semibold truncate mt-0.5">Instructor Profile</p>
           </div>
         </button>
       </div>
@@ -596,21 +617,27 @@ export function TeacherPortal({
                     {students
                       .slice()
                       .sort((a, b) => b.averageScore - a.averageScore)
-                      .map((student, idx) => (
-                        <div key={student.id} className="flex items-center justify-between py-1 border-b border-slate-100 last:border-0">
-                          <div className="flex items-center gap-3">
-                            <div className={`w-6 h-6 flex items-center justify-center rounded-full text-xs font-bold ${idx === 0 ? "bg-amber-100 text-amber-700" : idx === 1 ? "bg-slate-100 text-slate-600" : "bg-orange-50 text-orange-700"}`}>
-                              #{idx + 1}
+                      .map((student, idx) => {
+                        const totalXp = (student.completedCount || 4) * 120 + student.averageScore * 8;
+                        const currentLevel = Math.floor(totalXp / 500) + 1;
+                        const medalIcons = ["🥇", "🥈", "🥉"];
+
+                        return (
+                          <div key={student.id} className="flex items-center justify-between py-2 border-b border-slate-100 last:border-0 hover:bg-slate-50/65 px-1.5 rounded-lg transition-colors">
+                            <div className="flex items-center gap-3 min-w-0">
+                              <div className="w-6 h-6 flex items-center justify-center text-sm font-bold shrink-0">
+                                {idx < 3 ? medalIcons[idx] : <span className="text-xs text-slate-400">#{idx + 1}</span>}
+                              </div>
+                              <img src={student.avatar} alt={student.name} className="w-8 h-8 rounded-full object-cover shrink-0 border border-slate-150" />
+                              <div className="min-w-0">
+                                <p className="text-xs font-bold text-slate-800 truncate">{student.name}</p>
+                                <p className="text-[10px] text-slate-400 font-medium">Level {currentLevel} · Rank #{student.classRank}</p>
+                              </div>
                             </div>
-                            <img src={student.avatar} alt={student.name} className="w-8 h-8 rounded-full object-cover" />
-                            <div className="min-w-0">
-                              <p className="text-sm font-semibold text-slate-800 truncate">{student.name}</p>
-                              <p className="text-3xs text-slate-500">Rank #{student.classRank}</p>
-                            </div>
+                            <Badge className="bg-indigo-50 text-indigo-700 border-0 font-bold text-xs">{student.averageScore}%</Badge>
                           </div>
-                          <Badge className="bg-indigo-50 text-indigo-700 border-0 font-bold">{student.averageScore}%</Badge>
-                        </div>
-                      ))}
+                        );
+                      })}
                   </div>
                 </Card>
               </div>
@@ -723,15 +750,21 @@ export function TeacherPortal({
                       </tr>
                     </thead>
                     <tbody className="divide-y divide-slate-100">
-                      {filteredStudents.map((std) => (
-                        <tr key={std.id} className="hover:bg-slate-50/40">
-                          <td className="py-4 px-6 flex items-center gap-4">
-                            <img src={std.avatar} alt={std.name} className="w-10 h-10 rounded-full object-cover ring-2 ring-indigo-50" />
-                            <div>
-                              <p className="font-semibold text-slate-800 text-sm">{std.name}</p>
-                              <p className="text-xs text-slate-400">{std.email}</p>
-                            </div>
-                          </td>
+                      {filteredStudents.map((std) => {
+                        const totalXp = (std.completedCount || 4) * 120 + std.averageScore * 8;
+                        const currentLevel = Math.floor(totalXp / 500) + 1;
+                        return (
+                          <tr key={std.id} className="hover:bg-slate-50/40">
+                            <td className="py-4 px-6 flex items-center gap-4">
+                              <img src={std.avatar} alt={std.name} className="w-10 h-10 rounded-full object-cover ring-2 ring-indigo-50" />
+                              <div>
+                                <div className="flex items-center gap-1.5">
+                                  <p className="font-semibold text-slate-800 text-sm">{std.name}</p>
+                                  <Badge className="bg-slate-950 text-indigo-300 border border-slate-800 text-[9px] font-black py-0.5 px-1 rounded-sm hover:bg-slate-950">LVL {currentLevel}</Badge>
+                                </div>
+                                <p className="text-xs text-slate-400">{std.email}</p>
+                              </div>
+                            </td>
                           <td className="py-4 px-6">
                             <div className="flex items-center gap-2">
                               <span className="font-bold text-slate-800">{teacherSubjectId ? (std.subjectAverages[teacherSubjectId] || 0) : std.averageScore}%</span>
@@ -766,7 +799,8 @@ export function TeacherPortal({
                             </Button>
                           </td>
                         </tr>
-                      ))}
+                      );
+                    })}
                     </tbody>
                   </table>
                 </div>
